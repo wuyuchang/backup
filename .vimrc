@@ -16,7 +16,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'sirver/ultisnips'
+"Plugin 'sirver/ultisnips'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'drewtempelmeyer/palenight.vim'
 "
@@ -35,11 +35,14 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=0
 let g:airline_theme='wombat'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|vendor'
+set backspace=2
+set backspace=indent,eol,start
 
-"set background=dark
+let NERDTreeShowHidden=1
+let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|vendor'
+
 colorscheme palenight
 let g:palenight_terminal_italics=1
 set termguicolors
@@ -53,6 +56,11 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set hlsearch
+
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
 
 
 autocmd FileType php setlocal shiftwidth=4
@@ -73,3 +81,4 @@ nnoremap ;9 9gt
 nnoremap ;0 10gt
 nnoremap ;p :tabp<CR>
 nnoremap ;n :tabn<CR>
+nnoremap ;w :tabclose<CR>
