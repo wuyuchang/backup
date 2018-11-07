@@ -12,17 +12,12 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-Plugin 'leafgarland/typescript-vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'sirver/ultisnips'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'drewtempelmeyer/palenight.vim'
-Plugin 'Yggdroot/indentLine'
-Plugin 'chemzqm/wxapp.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'pangloss/vim-javascript'
+Plugin 'dracula/vim'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -38,25 +33,26 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-let g:NERDSpaceDelims = 1
-
-
-
-let g:indentLine_concealcursor = 'inc'
-let g:indentLine_conceallevel = 2
-let g:indentLine_setConceal = 0
-
+" ============================================================================================================================================
 let g:airline_powerline_fonts=0
-let g:airline_theme='wombat'
-
+"let g:airline_theme='wombat'
+let g:airline_theme='dracula'
+let g:NERDSpaceDelims = 1
 let NERDTreeShowHidden=1
 let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|vendor'
 
-colorscheme palenight
-let g:palenight_terminal_italics=1
-set termguicolors
+let g:dracula_bold = 0
+let g:dracula_italic = 0
+let g:dracula_underline = 0
+let g:dracula_undercurl = 0
+let g:dracula_inverse = 0
+" autocmd ColorScheme dracula hi CursorLine cterm=underline term=underline
 
-syntax enable
+
+"set termguicolors
+syntax on
+colorscheme dracula
+
 set encoding=utf-8
 set nu
 set number relativenumber
@@ -65,11 +61,54 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set hlsearch
-set lines=999 columns=999 " set maximum of the window when start up
 
+
+
+" set tab width as 4 on php
+autocmd FileType php setlocal shiftwidth=4
+autocmd FileType php setlocal softtabstop=4
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+
+
+
+
+" ========== below for key mappings ==========
+map <C-\> :NERDTreeToggle<CR>
+
+nnoremap ;1 1gt
+nnoremap ;2 2gt
+nnoremap ;3 3gt
+nnoremap ;4 4gt
+nnoremap ;5 5gt
+nnoremap ;6 6gt
+nnoremap ;7 7gt
+nnoremap ;8 8gt
+nnoremap ;9 9gt
+nnoremap ;0 10gt
+nnoremap ;p :tabp<CR>
+nnoremap ;n :tabn<CR>
+nnoremap ;w :tabclose<CR>
+" ========== above for key mappings ==========
+
+
+
+
+
+" ========== below for windows settings ==========
 " make backspace work insert mode on windows
 set backspace=2
 set backspace=indent,eol,start
+" ========== above for windows settings ==========
+
+
+
+
+
+" ========== below for gui settings ==========
+
+"set lines=40 columns=150 " set maximum of the window when start up
+"winpos 360 150
 
 set guioptions-=m " set not show menu
 set guioptions-=T " set not show toolbar
@@ -86,25 +125,4 @@ if has("gui_running")
     set guifont=Consolas:h11:cANSI
   endif
 endif
-
-
-" set tab width as 4 on php
-autocmd FileType php setlocal shiftwidth=4
-autocmd FileType php setlocal softtabstop=4
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-
-map <C-\> :NERDTreeToggle<CR>
-
-nnoremap ;1 1gt
-nnoremap ;2 2gt
-nnoremap ;3 3gt
-nnoremap ;4 4gt
-nnoremap ;5 5gt
-nnoremap ;6 6gt
-nnoremap ;7 7gt
-nnoremap ;8 8gt
-nnoremap ;9 9gt
-nnoremap ;0 10gt
-nnoremap ;p :tabp<CR>
-nnoremap ;n :tabn<CR>
-nnoremap ;w :tabclose<CR>
+" ========== above for gui settings ==========
