@@ -18,6 +18,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'dracula/vim'
+Plugin 'ekalinin/dockerfile.vim'
+Plugin 'chr4/nginx.vim'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -46,10 +48,9 @@ let g:dracula_italic = 0
 let g:dracula_underline = 0
 let g:dracula_undercurl = 0
 let g:dracula_inverse = 0
-" autocmd ColorScheme dracula hi CursorLine cterm=underline term=underline
 
 
-"set termguicolors
+set termguicolors
 syntax on
 colorscheme dracula
 
