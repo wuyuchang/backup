@@ -58,17 +58,18 @@ set encoding=utf-8
 set nu
 set number relativenumber
 set cursorline
-set expandtab
-set shiftwidth=2
+set expandtab " When expandtab is set, hitting Tab in insert mode will produce the appropriate number of spaces.
+set tabstop=2 " Set tabstop to tell vim how many columns a tab counts for."
 set softtabstop=2
+set shiftwidth=2 " Set shiftwidth to control how many columns text is indented with the reindent operations (<< and >>) and automatic C-style indentation"
 set hlsearch
 
 
 
 " set tab width as 4 on php
-autocmd FileType php setlocal shiftwidth=4
-autocmd FileType php setlocal softtabstop=4
+autocmd FileType php setlocal shiftwidth=4 softtabstop=4 tabstop=4
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType conf setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
 
 
 
@@ -89,7 +90,8 @@ nnoremap ;9 9gt
 nnoremap ;0 10gt
 nnoremap ;p :tabp<CR>
 nnoremap ;n :tabn<CR>
-nnoremap ;w :tabclose<CR>
+nnoremap ;o :tabe
+nnoremap ;x :tabclose<CR>
 " ========== above for key mappings ==========
 
 
