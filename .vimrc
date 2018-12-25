@@ -1,4 +1,4 @@
-set nocompatible              " be improved, required
+
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -18,9 +18,13 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'dracula/vim'
+Plugin 'craigemery/vim-autotag'
+Plugin 'valloric/youcompleteme'
 Plugin 'ekalinin/dockerfile.vim'
 Plugin 'chr4/nginx.vim'
-"
+Plugin 'stanangeloff/php.vim'
+Plugin 'arnaud-lb/vim-php-namespace'
+Plugin 'leafgarland/typescript-vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -57,6 +61,7 @@ colorscheme dracula
 set encoding=utf-8
 set nu
 set number relativenumber
+set nowrap " set not break the line when line is too long
 set cursorline
 set expandtab " When expandtab is set, hitting Tab in insert mode will produce the appropriate number of spaces.
 set tabstop=2 " Set tabstop to tell vim how many columns a tab counts for."
@@ -68,8 +73,8 @@ set hlsearch
 
 " set tab width as 4 on php
 autocmd FileType php setlocal shiftwidth=4 softtabstop=4 tabstop=4
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType conf setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd BufRead,BufNewFile *.conf setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
 
 
 
@@ -90,8 +95,13 @@ nnoremap ;9 9gt
 nnoremap ;0 10gt
 nnoremap ;p :tabp<CR>
 nnoremap ;n :tabn<CR>
-nnoremap ;o :tabe
+nnoremap ;o :tabe 
 nnoremap ;x :tabclose<CR>
+
+map <C-j> <C-W><Down>
+map <C-k> <C-W><Up>
+map <C-h> <C-W><Left>
+map <C-l> <C-W><Right>
 " ========== above for key mappings ==========
 
 
@@ -129,3 +139,31 @@ if has("gui_running")
   endif
 endif
 " ========== above for gui settings ==========
+
+
+" === vim-php-namespace setting === 
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
+
+autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
+autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
+
+let g:php_namespace_sort_after_insert = 1
+
+" === 
+
+
+
+" === vim-autotag settings ====
+g:autotagTagsFile = 'tags';
