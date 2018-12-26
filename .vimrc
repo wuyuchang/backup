@@ -40,20 +40,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 " ============================================================================================================================================
-let g:airline_powerline_fonts=0
-"let g:airline_theme='wombat'
-let g:airline_theme='dracula'
-let g:NERDSpaceDelims = 1
-let NERDTreeShowHidden=1
-let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|vendor'
-
-let g:dracula_bold = 0
-let g:dracula_italic = 0
-let g:dracula_underline = 0
-let g:dracula_undercurl = 0
-let g:dracula_inverse = 0
-
-
 set termguicolors
 syntax on
 colorscheme dracula
@@ -95,7 +81,7 @@ nnoremap ;9 9gt
 nnoremap ;0 10gt
 nnoremap ;p :tabp<CR>
 nnoremap ;n :tabn<CR>
-nnoremap ;o :tabe 
+nnoremap ;o :tabe
 nnoremap ;x :tabclose<CR>
 
 map <C-j> <C-W><Down>
@@ -141,7 +127,45 @@ endif
 " ========== above for gui settings ==========
 
 
-" === vim-php-namespace setting === 
+" ============= airline_powerline settings =============
+let g:airline_powerline_fonts=0
+"let g:airline_theme='wombat'
+let g:airline_theme='dracula'
+" ============= airline_powerline settings =============
+
+
+
+" ============= NERDTree settings =============
+let g:NERDSpaceDelims = 1
+let NERDTreeShowHidden=1
+" ============= NERDTree settings =============
+
+
+
+" ============= ctrlp settings =============
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/storage/*
+let g:ctrlp_show_hidden=1
+" let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|vendor'
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|idea)$',
+    \ 'file': '\v[\/]\.(exe|so|dll)$',
+    \ 'link': 'some_bad_symbolic_links',
+    \ }
+" ============= ctrlp settings =============
+
+
+
+" ============= dracula settings =============
+let g:dracula_bold = 0
+let g:dracula_italic = 0
+let g:dracula_underline = 0
+let g:dracula_undercurl = 0
+let g:dracula_inverse = 0
+" ============= dracula settings =============
+
+
+
+" ======== vim-php-namespace setting =========
 function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
@@ -160,10 +184,10 @@ autocmd FileType php inoremap <Leader>s <Esc>:call PhpSortUse()<CR>
 autocmd FileType php noremap <Leader>s :call PhpSortUse()<CR>
 
 let g:php_namespace_sort_after_insert = 1
-
-" === 
-
+" ======== vim-php-namespace setting =========
 
 
-" === vim-autotag settings ====
-g:autotagTagsFile = 'tags';
+
+" =========== vim-autotag settings ===========
+let g:autotagTagsFile = 'tags'
+" =========== vim-autotag settings ===========
