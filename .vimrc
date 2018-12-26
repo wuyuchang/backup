@@ -47,7 +47,7 @@ colorscheme dracula
 set encoding=utf-8
 set nu
 set number relativenumber
-set nowrap " set not break the line when line is too long
+" set nowrap " set not break the line when line is too long
 set cursorline
 set expandtab " When expandtab is set, hitting Tab in insert mode will produce the appropriate number of spaces.
 set tabstop=2 " Set tabstop to tell vim how many columns a tab counts for."
@@ -81,7 +81,7 @@ nnoremap ;9 9gt
 nnoremap ;0 10gt
 nnoremap ;p :tabp<CR>
 nnoremap ;n :tabn<CR>
-nnoremap ;o :tabe
+nnoremap ;o :tabe 
 nnoremap ;x :tabclose<CR>
 
 map <C-j> <C-W><Down>
@@ -143,7 +143,7 @@ let NERDTreeShowHidden=1
 
 
 " ============= ctrlp settings =============
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/storage/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/storage/*,*/node_modules/*
 let g:ctrlp_show_hidden=1
 " let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|vendor'
 let g:ctrlp_custom_ignore = {
